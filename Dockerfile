@@ -1,2 +1,6 @@
-FROM tomcat:9-jdk11
-COPY ./target/webapp /usr/local/tomcat/webapps/webapp 
+FROM ubuntu:latest
+RUN apt-get install -y apache2
+RUN apt-get install php
+COPY . /var/www/html
+WORKDIR /var/www/html
+RUN service restart apache2
